@@ -90,25 +90,58 @@ public class TrybankLib
     // 4. Construa a funcionalidade de checar o saldo
     public int CheckBalance()
     {
-        throw new NotImplementedException();   
+        if (!Logged)
+        {
+            throw new AccessViolationException("Usuário não está logado");
+        }
+        return Bank[loggedUser,3]; 
     }
 
     // 5. Construa a funcionalidade de depositar dinheiro
     public void Deposit(int value)
     {
-        throw new NotImplementedException();
+        if (!Logged)
+        {
+            throw new AccessViolationException("Usuário não está logado");
+        }
+        Bank[loggedUser,3] = Bank[loggedUser,3] + value; 
     }
 
     // 6. Construa a funcionalidade de sacar dinheiro
     public void Withdraw(int value)
     {
-        throw new NotImplementedException();
+        if (!Logged)
+            throw new AccessViolationException("Usuário não está logado");
+        
+        if((Bank[loggedUser,3] - value) < 0)
+            throw new InvalidOperationException("Saldo insuficiente");
+        Bank[loggedUser,3] = Bank[loggedUser,3] - value;
     }
 
     // 7. Construa a funcionalidade de transferir dinheiro entre contas
     public void Transfer(int destinationNumber, int destinationAgency, int value)
     {
-        throw new NotImplementedException();
+        if (!Logged)
+            throw new AccessViolationException("Usuário não está logado");
+        if((Bank[loggedUser,3] - value) < 0)
+            throw new InvalidOperationException("Saldo insuficiente");
+        
+        int lines = Bank.GetLength(0);
+        int acountDestiny = -1;
+
+        for (int i = lines - 1; i >= 0; i--)
+        {
+            if (Bank[i, 0] == destinationNumber && Bank[i, 1] == destinationAgency)
+            {
+                acountDestiny = i;
+            }
+        }
+        if(acountDestiny == -1)
+            throw new ArgumentException("Agência + Conta não encontrada");
+
+        Bank[loggedUser,3] = Bank[loggedUser,3] - value;
+        Bank[acountDestiny,3] = Bank[acountDestiny,3] + value;
+        Console.WriteLine(Bank[destinationNumber,1]);
     }
 
    
