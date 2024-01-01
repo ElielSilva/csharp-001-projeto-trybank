@@ -38,20 +38,53 @@ public class TrybankLib
         Bank[registeredAccounts,1] = agency;
         Bank[registeredAccounts,2] = pass;
         Bank[registeredAccounts,3] = 0;
-        Console.WriteLine("aqui "+ Bank[0,0]);
+        //Console.WriteLine("aqui "+ Bank[0,0]);
         registeredAccounts =+ 1;
     }
 
     // 2. Construa a funcionalidade de fazer Login
     public void Login(int number, int agency, int pass)
     {
-        throw new NotImplementedException();
+        int lines = Bank.GetLength(0);
+        int acount = -99;
+        
+        for (int i = 0; i < lines; i++)
+        {
+            if (Bank[i, 0] == number && Bank[i,1] == agency)
+            {
+                acount = i;
+                //Console.WriteLine(Bank[i,0]);
+            }
+        }
+        //Console.WriteLine(acount);
+        if(Logged)
+            throw new AccessViolationException("Usuário já está logado");
+        
+        if(acount != -99)
+        {
+            if (Bank[acount,2] == pass)
+            {
+                loggedUser = acount;
+                Logged = true;
+                return;
+            }
+            else
+            {
+                throw new ArgumentException("Senha incorreta");
+            }
+        }
+        throw new ArgumentException("Agência + Conta não encontrada");
     }
 
     // 3. Construa a funcionalidade de fazer Logout
     public void Logout()
     {
-        throw new NotImplementedException();
+        if (!Logged)
+        {
+            throw new AccessViolationException("Usuário não está logado");
+        }
+        Logged = false;
+        loggedUser = -99;
     }
 
     // 4. Construa a funcionalidade de checar o saldo
