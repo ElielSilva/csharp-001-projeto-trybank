@@ -15,7 +15,7 @@ Além disso, permite com que nessa aplicação, cadastre novas contas, faça log
 <details>
   <summary><strong>:memo: Habilidades que fram trabalhadas </strong></summary>
 
-Neste projeto, verificamos se você é capaz de:
+Neste projeto, foi coloca a prova as capacidades de:
 
 - Entender sobre as estruturas de array
 - Realizar a conversão e manipulação de variáveis de diversos tipos
