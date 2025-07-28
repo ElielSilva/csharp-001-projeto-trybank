@@ -13,9 +13,9 @@ Além disso, permite com que nessa aplicação, cadastre novas contas, faça log
 </details>
 
 <details>
-  <summary><strong>:memo: Habilidades que fram trabalhadas </strong></summary>
+  <summary><strong>:memo: Habilidades que foram trabalhadas </strong></summary>
 
-Neste projeto, foi coloca a prova as capacidades de:
+Neste projeto, foi colocado a prova as capacidades de:
 
 - Entender sobre as estruturas de array
 - Realizar a conversão e manipulação de variáveis de diversos tipos
@@ -42,8 +42,9 @@ Neste projeto, foi coloca a prova as capacidades de:
   - Entre na pasta `src/`.
   - Execute o comando: `dotnet restore`.
 
-  3. Rodar o projeto.
-    - Execute o comando: `dotnet run`.
+  3. Execute o projeto
+  
+  - Execute o comando: `dotnet run`.
 
 </details>
 
@@ -52,6 +53,7 @@ Neste projeto, foi coloca a prova as capacidades de:
 Os dados da conta bancária ficará armazenado em um array multidimensional. Cada array que irá armazenar os dados tem na posição 0 o número da conta, na posição 1, a agencia, na posição 2 a senha de acesso e na posição 3 o saldo da conta. Por exemplo, para cadastro das seguintes contas:
 
 Conta 1: Agência 1, Número da conta: 1234, Senha: 987, Saldo: 0
+
 Conta 2: Agência 2, Número da conta: 5678, Senha: 765, Saldo: 0
 
 O array multidimensional ficaria:
