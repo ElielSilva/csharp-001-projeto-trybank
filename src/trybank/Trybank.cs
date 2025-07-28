@@ -21,7 +21,6 @@ public class TrybankLib
         Bank = new int[maxAccounts, 4];
     }
 
-    // 1. Construa a funcionalidade de cadastrar novas contas
     public void RegisterAccount(int number, int agency, int pass)
     {
         int lines = Bank.GetLength(0);
@@ -42,7 +41,6 @@ public class TrybankLib
         registeredAccounts =+ 1;
     }
 
-    // 2. Construa a funcionalidade de fazer Login
     public void Login(int number, int agency, int pass)
     {
         int lines = Bank.GetLength(0);
@@ -53,10 +51,9 @@ public class TrybankLib
             if (Bank[i, 0] == number && Bank[i,1] == agency)
             {
                 acount = i;
-                //Console.WriteLine(Bank[i,0]);
             }
         }
-        //Console.WriteLine(acount);
+        
         if(Logged)
             throw new AccessViolationException("Usuário já está logado");
         
@@ -76,7 +73,6 @@ public class TrybankLib
         throw new ArgumentException("Agência + Conta não encontrada");
     }
 
-    // 3. Construa a funcionalidade de fazer Logout
     public void Logout()
     {
         if (!Logged)
@@ -87,7 +83,6 @@ public class TrybankLib
         loggedUser = -99;
     }
 
-    // 4. Construa a funcionalidade de checar o saldo
     public int CheckBalance()
     {
         if (!Logged)
@@ -97,7 +92,6 @@ public class TrybankLib
         return Bank[loggedUser,3]; 
     }
 
-    // 5. Construa a funcionalidade de depositar dinheiro
     public void Deposit(int value)
     {
         if (!Logged)
@@ -107,7 +101,6 @@ public class TrybankLib
         Bank[loggedUser,3] = Bank[loggedUser,3] + value; 
     }
 
-    // 6. Construa a funcionalidade de sacar dinheiro
     public void Withdraw(int value)
     {
         if (!Logged)
@@ -118,7 +111,6 @@ public class TrybankLib
         Bank[loggedUser,3] = Bank[loggedUser,3] - value;
     }
 
-    // 7. Construa a funcionalidade de transferir dinheiro entre contas
     public void Transfer(int destinationNumber, int destinationAgency, int value)
     {
         if (!Logged)
